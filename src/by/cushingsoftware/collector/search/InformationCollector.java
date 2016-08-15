@@ -1,7 +1,7 @@
 package by.cushingsoftware.collector.search;
 
-import org.jsoup.select.Elements;
+import java.util.Map;
 
 public interface InformationCollector {
-	Elements search(String data);
+	Map<String, String> search(String data);
 }

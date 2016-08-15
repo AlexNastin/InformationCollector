@@ -10,8 +10,10 @@ import org.jsoup.select.Elements;
 
 public class Main2 {
 
-	public static final String GOOGLE_SEARCH_URL = "https://www.google.com/search";
-	public static final String YAHOO_SEARCH_URL = "	https://search.yahoo.com/search?p=Java";
+	public static final String GOOGLE_SEARCH_URL ="https://www.google.com/search";
+	public static final String YAHOO_SEARCH_URL = "https://search.yahoo.com/search";
+	public static final String MAIL_SEARCH_URL = "http://go.mail.ru/search?q=Java";
+	
 	public static void main(String[] args) throws IOException {
 //		for (String string : args) {
 //			System.out.println(string + "!");
@@ -41,7 +43,7 @@ public class Main2 {
 //		scanner.close();
 
 //		String searchURL = GOOGLE_SEARCH_URL + "?q=" + searchTerm + "&num=" + num;
-		String searchURL = YAHOO_SEARCH_URL;
+		String searchURL = MAIL_SEARCH_URL;
 		// without proper User-Agent, we will get 403 error
 //		Document doc = Jsoup.connect(searchURL).userAgent("Mozilla/5.0").get();
 		Document doc = Jsoup.connect(searchURL).userAgent("Mozilla/5.0").get();
@@ -60,7 +62,11 @@ public class Main2 {
 		Elements results = doc.select("a[href]");
 
 		for (Element result : results) {
-System.out.println(result);
+//System.out.println(result);
+String temp = result.attr("href");
+String linkText = result.text();
+System.out.println("! " +temp );
+System.out.println("! " +linkText );
 			//			String linkHref = result.attr("href");
 //			String linkText = result.text();
 //			System.out.println("Text::" + linkText + ", URL::" + linkHref.substring(6, linkHref.indexOf("&")));
