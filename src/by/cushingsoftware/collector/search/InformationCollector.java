@@ -1,7 +1,7 @@
 package by.cushingsoftware.collector.search;
 
-import java.util.Map;
+import java.util.List;
 
 public interface InformationCollector {
-	Map<String, String> search(String data);
+	List<String> search(String data);
 }
