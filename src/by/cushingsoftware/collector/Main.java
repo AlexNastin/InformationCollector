@@ -21,7 +21,7 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		String data = InputDataParser.parse(args);
-		System.out.println(data);
+		System.out.println("Ваш поисковой запрос: "+data);
 		System.out.println();
 		System.out.println("GOOGLE");
 		InformationCollectorFactory factory = InformationCollectorFactory.getInstance();
@@ -47,7 +47,7 @@ public class Main {
 		List<List<String>> maps = new ArrayList<List<String>>();
 		maps.add(map);
 		maps.add(map2);
-//		maps.add(map3);
+		maps.add(map3);
 		CsvFileWriter.writeCsvFile(maps);
 	}
 }
