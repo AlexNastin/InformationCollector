@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,8 +12,6 @@ import org.jsoup.select.Elements;
 public class GoogleInformationCollector implements InformationCollector {
 
 	private final String GOOGLE_SEARCH_URL = "https://www.google.com/search";
-
-	private static Logger LOGGER = Logger.getLogger(GoogleInformationCollector.class);
 	
 	@Override
 	public List<String> search(String data) {
@@ -34,7 +31,7 @@ public class GoogleInformationCollector implements InformationCollector {
 				results = InformationCollector.unsuccessfulList;
 			}
 		} catch (IOException e) {
-			LOGGER.error(e);
+			e.printStackTrace();
 		}
 		return results;
 	}

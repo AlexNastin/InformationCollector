@@ -4,8 +4,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.log4j.Logger;
-
 public class CsvFileWriter {
 	
 	private static final String DECLARE_SEPARATOR = "sep=,";
@@ -13,8 +11,6 @@ public class CsvFileWriter {
 	private static final String NEW_LINE_SEPARATOR = "\n";
 	private static final String FILE_NAME = "/search_result.csv";
 	private static final String FILE_HEADER = "¹,GOOGLE,YAHOO,YANDEX";
-
-	private static Logger LOGGER = Logger.getLogger(CsvFileWriter.class);
 
 	public static void writeCsvFile(List<List<String>> data) {
 		FileWriter fileWriter = null;
@@ -25,9 +21,9 @@ public class CsvFileWriter {
 			stringBuilder.append(NEW_LINE_SEPARATOR);
 			stringBuilder.append(FILE_HEADER.toString());
 			stringBuilder.append(NEW_LINE_SEPARATOR);
-			final int size = data.get(0).size();
-			for (int i = 0; i < size ; i++) {
-				stringBuilder.append(i);
+			int number = 1;
+			for (int i = 0; i < data.get(0).size(); i++) {
+				stringBuilder.append(number++);
 				stringBuilder.append(COMMA_DELIMITER);
 				for (int j = 0; j < data.size(); j++) {
 					stringBuilder.append(data.get(j).get(i));
@@ -37,14 +33,12 @@ public class CsvFileWriter {
 			}
 			fileWriter.write(stringBuilder.toString());
 		} catch (Exception e) {
-			LOGGER.error(e);
 			e.printStackTrace();
 		} finally {
 			try {
 				fileWriter.flush();
 				fileWriter.close();
 			} catch (IOException e) {
-				LOGGER.error(e);
 				e.printStackTrace();
 			}
 		}

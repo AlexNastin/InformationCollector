@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -13,8 +12,6 @@ import org.jsoup.select.Elements;
 public class YandexInformationCollector implements InformationCollector {
 
 	public static final String YANDEX_SEARCH_URL = "https://yandex.by/search/";
-	
-	private static Logger LOGGER = Logger.getLogger(YandexInformationCollector.class);
 
 	@Override
 	public List<String> search(String data) {
@@ -28,12 +25,12 @@ public class YandexInformationCollector implements InformationCollector {
 			if (resultElements.size() != 0) {
 				for (Element result : resultElements) {
 					results.add(result.attr("href"));
-				}	
+				}
 			} else {
 				results = InformationCollector.unsuccessfulList;
 			}
 		} catch (IOException e) {
-			LOGGER.error(e);
+			e.printStackTrace();
 		}
 		return results;
 	}

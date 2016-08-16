@@ -1,11 +1,8 @@
-package by.cushingsoftware.collector;
+package by.cushingsoftware.collector.main;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.apache.log4j.LogManager;
-import org.apache.log4j.xml.DOMConfigurator;
 
 import by.cushingsoftware.collector.parser.InputDataParser;
 import by.cushingsoftware.collector.search.InformationCollector;
@@ -14,11 +11,7 @@ import by.cushingsoftware.collector.search.SearchSystem;
 import by.cushingsoftware.collector.writer.CsvFileWriter;
 
 public class Main {
-
-	static {
-		new DOMConfigurator().doConfigure("log4j.xml", LogManager.getLoggerRepository());
-	}
-
+	
 	public static void main(String[] args) throws IOException {
 		String data = InputDataParser.parse(args);
 		System.out.println("Ваш поисковой запрос: "+data);
