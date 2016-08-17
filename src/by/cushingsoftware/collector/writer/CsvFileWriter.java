@@ -9,7 +9,7 @@ public class CsvFileWriter {
 	private static final String DECLARE_SEPARATOR = "sep=,";
 	private static final String COMMA_DELIMITER = ",";
 	private static final String NEW_LINE_SEPARATOR = "\n";
-	private static final String FILE_NAME = "/search_result.csv";
+	private static final String FILE_NAME = "search_result.csv";
 	private static final String FILE_HEADER = "¹,GOOGLE,YAHOO,YANDEX";
 
 	public static void writeCsvFile(List<List<String>> data) {
