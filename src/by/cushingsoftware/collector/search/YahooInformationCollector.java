@@ -22,6 +22,7 @@ public class YahooInformationCollector implements InformationCollector {
 		try {
 			Document doc = Jsoup.connect(searchURL.toString()).userAgent("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/33.0.1750.152 Safari/537.36").get();
 			Elements resultElements = doc.select("h3.title > a");
+			
 			if (resultElements.size() != 0) {
 				for (Element result : resultElements) {
 					results.add(result.attr("href"));
@@ -30,7 +31,10 @@ public class YahooInformationCollector implements InformationCollector {
 				results = InformationCollector.unsuccessfulList;
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			StringBuilder error = new StringBuilder(YahooInformationCollector.class.toString());
+			error.append(" Непредвиденная ошибка при поиске: ");
+			error.append(e);
+			System.err.println(error);
 		}
 		return results;
 	}

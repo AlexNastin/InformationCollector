@@ -31,7 +31,10 @@ public class GoogleInformationCollector implements InformationCollector {
 				results = InformationCollector.unsuccessfulList;
 			}
 		} catch (IOException e) {
-			e.printStackTrace();
+			StringBuilder error = new StringBuilder(GoogleInformationCollector.class.toString());
+			error.append(" Непредвиденная ошибка при поиске: ");
+			error.append(e);
+			System.err.println(error);
 		}
 		return results;
 	}

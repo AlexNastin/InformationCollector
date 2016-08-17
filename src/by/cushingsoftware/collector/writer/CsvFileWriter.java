@@ -33,13 +33,19 @@ public class CsvFileWriter {
 			}
 			fileWriter.write(stringBuilder.toString());
 		} catch (Exception e) {
-			e.printStackTrace();
+			StringBuilder error = new StringBuilder(CsvFileWriter.class.toString());
+			error.append(" Непредвиденная ошибка при записи файла: ");
+			error.append(e);
+			System.err.println(error);
 		} finally {
 			try {
 				fileWriter.flush();
 				fileWriter.close();
 			} catch (IOException e) {
-				e.printStackTrace();
+				StringBuilder error = new StringBuilder(CsvFileWriter.class.toString());
+				error.append(" Непредвиденная ошибка: ");
+				error.append(e);
+				System.err.println(error);
 			}
 		}
 	}
